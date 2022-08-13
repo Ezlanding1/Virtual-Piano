@@ -21,7 +21,7 @@ public class MIDIReader : MonoBehaviour {
     [Header("Song Details")]
 
     [SerializeField] float BeatsPerMinute = 60;
-    [SerializeField] float TimeSignatureA = 4;
+    [SerializeField] float TimeSignatureA = 4; 
     [SerializeField] float TimeSignatureB = 4;
     public double wait;
 
@@ -61,6 +61,18 @@ public class MIDIReader : MonoBehaviour {
         //StartCoroutine(ParseNotes(midiFile.Tracks[3]));
         //StartCoroutine(ParseNotes(midiFile.Tracks[6]));
     }
+    static string MIDIIndexToKey(MidiEvent midiEvent)
+    {
+        if (AudioManager.KeyDictionary.ContainsKey(midiEvent.Arg2))
+        {
+            return AudioManager.KeyDictionary[midiEvent.Arg2].KeyName;
+        }
+        else
+        {
+            Debug.LogError("Error: Key Not Mapped");
+            return null;
+        }
+    }
 
     IEnumerator ParseNotes(MidiTrack track)
     {
@@ -68,8 +80,9 @@ public class MIDIReader : MonoBehaviour {
         {
             if (!AudioManager.started) { AudioManager.started = true; }
             waitDelta = midiEvent.Time;
+            Debug.Log("waiting for " + waitDelta);
             wait = (((double)(waitDelta - lastTime) / 1000d) * BeatsPerMinuteToSpeed(BeatsPerMinute));
-            yield return new WaitForSecondsRealtime((float)wait);
+            yield return new WaitForSeconds((float)wait);
             lastTime = midiEvent.Time;
 
             const string Format = "{0} Channel {1} Time {2} Args {3} {4}";
@@ -100,31 +113,36 @@ public class MIDIReader : MonoBehaviour {
             }
             else
             {
-                // Debug.Log(
-                //                 string.Format(Format,
-                //                 midiEvent.MidiEventType,
-                //                 midiEvent.Channel,
-                //                 midiEvent.Time,
-                //                 midiEvent.Arg2,
-                //                 midiEvent.Arg3));
+                Debug.Log(
+                                string.Format(Format,
+                                midiEvent.MidiEventType,
+                                midiEvent.Channel,
+                                midiEvent.Time,
+                                midiEvent.Arg2,
+                                midiEvent.Arg3));
 
                 switch (midiEvent.MidiEventType)
                 {
                     case MidiEventType.NoteOn:
-                        {
-                            var key = AudioManager.KeyDictionary[midiEvent.Arg2];
-                            key.Play(midiEvent.Arg3, track.Index);
-                            effects.PlayEffect(key);
-                        }
+                        NoteSwitch("On", midiEvent, track.Index);
                         break;
                     case MidiEventType.NoteOff:
-                        {
-                            var key = AudioManager.KeyDictionary[midiEvent.Arg2];
-                            key.Stop();
-                        }
+                        NoteSwitch("Off", midiEvent);
+                        break;
+                    case MidiEventType.KeyAfterTouch:
                         break;
                     case MidiEventType.ControlChange:
                         ControlChangeEvents(midiEvent, track.Index);
+                        break;
+                    case MidiEventType.ProgramChange:
+                        break;
+                    case MidiEventType.ChannelAfterTouch:
+                        break;
+                    case MidiEventType.PitchBendChange:
+                        break;
+                    case MidiEventType.MetaEvent:
+                        break;
+                    default:
                         break;
                 }
 
@@ -133,6 +151,25 @@ public class MIDIReader : MonoBehaviour {
         }
     }
 
+    void NoteSwitch(string state, MidiEvent midiEvent, int trackIndex = 0)
+    {
+        switch (state)
+        {
+
+            case "On":
+                foreach (Key key in PianoKeys.transform.GetComponentsInChildren<Key>())
+                {
+                    if (key.KeyName == MIDIIndexToKey(midiEvent)) { key.Play(midiEvent.Arg3, trackIndex); effects.PlayEffect(key);  Debug.Log("Playing " + MIDIIndexToKey(midiEvent)); } 
+                }
+                break;
+            case "Off":
+                foreach (Key key in PianoKeys.transform.GetComponentsInChildren<Key>())
+                {
+                    if (key.KeyName == MIDIIndexToKey(midiEvent)) { key.Stop(midiEvent.Arg3); Debug.Log("Stopping " + MIDIIndexToKey(midiEvent)); } 
+                }
+                break;
+        }
+    }
     double BeatsPerMinuteToSpeed(float BPM)
     {
         //return(60,000 / BeatsPerMinute) * Beats in a mesaure
@@ -161,8 +198,8 @@ public class MIDIReader : MonoBehaviour {
                 ChannelPan[trackIndex] = (midiEvent.Arg3 / 12.8f);
                 break;
             case 64:
-                if (midiEvent.Arg3 <= 63) ChannelSustain[trackIndex] = false;
-                if (midiEvent.Arg3 >= 64) ChannelSustain[trackIndex] = true;
+                if (midiEvent.Arg3 <= 63) { ChannelSustain[trackIndex] = false; }
+                if (midiEvent.Arg3 >= 64) { ChannelSustain[trackIndex] = true; }
                 break;
             default:
                 break;
