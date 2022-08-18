@@ -21,7 +21,7 @@ public class MIDIReader : MonoBehaviour {
     [Header("Song Details")]
 
     [SerializeField] float BeatsPerMinute = 60;
-    [SerializeField] float TimeSignatureA = 4; 
+    [SerializeField] float TimeSignatureA = 4;
     [SerializeField] float TimeSignatureB = 4;
     public double wait;
 
