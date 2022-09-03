@@ -1,70 +1,118 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Synth : MonoBehaviour
 {
-    public float gain;
+    [Header("Note")]
+    public float hz = 440f;
+    [Range(0,1)]
+    public float velocity = 0.8f;
+    [Range(0,1)]
+    public float pan = 0.5f;
 
-    double increment;
-    double phase;
-    double samplingFrequency;
+    [Header("Envelope")]
+    public float attack = 0.01f;
+    public float decay = 0.2f;
+    public float sustain = 0.7f;
+    public float release = 0.5f;
 
-    Key key;
+    [Header("Piano Modeling")]
+    public int partialCount = 35;
+    public float inharmonicity = 0.0005f;
+    [Range(0,1)]
+    public float brightness = 0.5f;
 
-    float[] harmonicStrengths;
-    private void Start()
+    [Header("Engine")]
+    public float sampleRate = 48000f;
+    public bool sustainPedal = false;
+
+    float env;
+    float envTime;
+    bool gate;
+
+    float[] partialPhases;
+    float[] partialAmps;
+
+    void Awake()
     {
-        samplingFrequency = AudioSettings.outputSampleRate;
-        key = GetComponent<Key>();
-        if (key.Hz <= 523.2511)
+        partialPhases = new float[partialCount];
+        partialAmps = new float[partialCount];
+
+        for (int p = 0; p < partialCount; p++)
         {
-            harmonicStrengths = key.audioManager.HarmonicStrengths;
+            partialAmps[p] = (1f / (p + 1)) * Mathf.Pow(1f - (p / (float)partialCount), brightness);
         }
-        else
-        {
-            harmonicStrengths = key.audioManager.HarmonicStrengths2;
-        }
-        
     }
-    
-    private void OnAudioFilterRead(float[] data, int channels)
+
+    public void Play()
     {
-        if (!key || harmonicStrengths == null) return;
+        gate = true;
+        envTime = 0f;
+    }
 
-        increment = key.Hz * 2.0 * Mathf.PI / samplingFrequency;
+    public void Stop()
+    {
+        gate = false;
+        envTime = 0f;
+    }
 
-        float leftPan  = (10f - key.Pan) / 5f;
-        float rightPan = key.Pan / 5f;
-
-        int harmonicCount = harmonicStrengths.Length;
+    void OnAudioFilterRead(float[] data, int channels)
+    {
+        float nyquist = sampleRate * 0.5f;
 
         for (int i = 0; i < data.Length; i += channels)
         {
-            phase += increment;
-
-            float sampleLeft = 0f;
-            float sampleRight = 0f;
-
-            for (int h = 0; h < harmonicCount; h++)
+            // ADSR Envelope
+            if (gate)
             {
-                float harmonic = Mathf.Sin((h + 1) * (float)phase);
-                float amp = gain * harmonicStrengths[h];
-
-                sampleLeft += amp * leftPan * harmonic;
-
-                if (channels == 2)
-                    sampleRight += amp * rightPan * harmonic;
+                if (envTime < attack)
+                    env = envTime / attack;
+                else if (envTime < attack + decay)
+                    env = Mathf.Lerp(1f, sustain, (envTime - attack) / decay);
+                else
+                    env = sustain;
+            }
+            else
+            {
+                float relTime = envTime / release;
+                env = Mathf.Lerp(env, 0f, relTime);
             }
 
-            data[i] = sampleLeft;
+            envTime += 1f / sampleRate;
+            env = Mathf.Clamp01(env);
 
+            float sample = 0f;
+
+            // Harmonics
+            for (int p = 0; p < partialCount; p++)
+            {
+                float harmonic = p + 1;
+                float freq = hz * harmonic * Mathf.Sqrt(1f + inharmonicity * harmonic * harmonic);
+
+                if (freq > nyquist)
+                    continue;
+
+                float partialEnv = partialAmps[p] * env * Mathf.Exp(-harmonic * 2f * envTime * 0.5f);
+
+                partialPhases[p] += (freq * 2f * Mathf.PI) / sampleRate;
+                sample += Mathf.Sin(partialPhases[p]) * partialEnv;
+            }
+
+            // Scale by volume
+            sample *= velocity;
+
+            // Pan
             if (channels == 2)
-                data[i + 1] = sampleRight;
+            {
+                data[i]     += sample * (1f - pan);
+                data[i + 1] += sample * pan;
+            }
+            else
+            {
+                data[i] += sample;
+            }
 
-            if (phase >= Mathf.PI * 2f)
-                phase -= Mathf.PI * 2f;
+            if (!gate && env <= 0.0001f)
+                break;
         }
     }
-
 }

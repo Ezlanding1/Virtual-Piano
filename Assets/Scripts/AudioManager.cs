@@ -20,16 +20,25 @@ public class AudioManager : MonoBehaviour
     [SerializeField] GameObject[] UIObjects;
     bool hidden;
 
-    [Header("Key Constants")]
-    public AnimationCurve ADSR_Envelope;
-    public float Damper_Amplitude;
-    public float MasterVolume;
-    public float[] HarmonicStrengths;
-    public float[] HarmonicStrengths2;
+    [Header("Global Settings")]
+    [SerializeField] public float MasterVolume = 10f;
+
+    [Header("Envelope")]
+    [SerializeField] public float attack = 0.005f;
+    [SerializeField] public float decay = 0.15f;
+    [SerializeField] public float sustain = 0.3f;
+    [SerializeField] public float release = 1.8f;
+
+    [Header("Piano Modeling")]
+    [SerializeField] public float sampleRate = 48000f;
+    [SerializeField] public int partialCount = 105;
+    [SerializeField] public float inharmonicity = 0.0008f; // piano string stiffness
+    [SerializeField] public float brightness = 0.7f;
     
     // Start is called before the first frame update
     void Start()
     {
+        sampleRate = AudioSettings.outputSampleRate;
         input.gameObject.SetActive(false);
         Destroy(RCurtain, 5);
         Destroy(LCurtain, 5);
@@ -92,7 +101,7 @@ public class AudioManager : MonoBehaviour
 
     public void applyChanges()
     {
-        FilePath = @"C:\Users\ezrak\OneDrive\Desktop\Virtual Piano\Assets\MIDI\" + input.text + ".mid";
+        FilePath = input.text;
         input.gameObject.SetActive(false);
     }
 }
