@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MidiParser;
+
 public class MIDIReader : MonoBehaviour {
 
     public static MidiFile midiFile;
@@ -31,7 +32,10 @@ public class MIDIReader : MonoBehaviour {
     public float[] ChannelPan;
     public bool[] ChannelSustain;
 
-    public void Main(string path, MonoBehaviour instance)
+    private int tracksDone;
+    public bool SongDone => midiFile == null || tracksDone == midiFile.TracksCount;
+
+    public void StartRead(string path, MonoBehaviour instance)
     {
         string Path = path;
         Debug.Log(string.Format("Parsing: {0}\n", Path));
@@ -39,7 +43,7 @@ public class MIDIReader : MonoBehaviour {
         Debug.Log(string.Format("Format: {0}", midiFile.Format));
         Debug.Log(string.Format("TicksPerQuarterNote: {0}", midiFile.TicksPerQuarterNote));
         Debug.Log(string.Format("TracksCount: {0}", midiFile.TracksCount));
-        #region Setting Variables
+
         FilePath = Path;
         Format = midiFile.Format;
         TicksPerQuarterNote = midiFile.TicksPerQuarterNote;
@@ -50,39 +54,33 @@ public class MIDIReader : MonoBehaviour {
         ChannelPan = new float[midiFile.TracksCount];
         for (int i = 0; i < ChannelPan.Length; i++){ ChannelPan[i] = 5; }
         ChannelSustain = new bool[midiFile.TracksCount];
-        #endregion
 
+        tracksDone = 0;
         foreach (var track in midiFile.Tracks)
         {
             Debug.Log(string.Format("\nTrack: {0}\n", track.Index));
 
             StartCoroutine(ParseNotes(track));
         }
-        //StartCoroutine(ParseNotes(midiFile.Tracks[3]));
-        //StartCoroutine(ParseNotes(midiFile.Tracks[6]));
     }
 
+    // Handle MIDI Note Event
     IEnumerator ParseNotes(MidiTrack track)
     {
         foreach (var midiEvent in track.MidiEvents)
         {
-            if (!AudioManager.started) { AudioManager.started = true; }
+            // Note Delay
             waitDelta = midiEvent.Time;
             wait = (((double)(waitDelta - lastTime) / 1000d) * BeatsPerMinuteToSpeed(BeatsPerMinute));
             yield return new WaitForSecondsRealtime((float)wait);
             lastTime = midiEvent.Time;
 
-            const string Format = "{0} Channel {1} Time {2} Args {3} {4}";
+            // DebugLogKeyInfo(midiEvent);
+
+            
             if (midiEvent.MidiEventType == MidiEventType.MetaEvent)
             {
-                Debug.Log(
-                    string.Format(Format,
-                    midiEvent.MetaEventType,
-                    "-",
-                    midiEvent.Time,
-                    midiEvent.Arg2,
-                    midiEvent.Arg3));
-
+                // Handle MIDI MetaEvent (temp change, time signature change, etc)
                 switch (midiEvent.MetaEventType)
                 {
                     case MetaEventType.Tempo:
@@ -100,14 +98,7 @@ public class MIDIReader : MonoBehaviour {
             }
             else
             {
-                // Debug.Log(
-                //                 string.Format(Format,
-                //                 midiEvent.MidiEventType,
-                //                 midiEvent.Channel,
-                //                 midiEvent.Time,
-                //                 midiEvent.Arg2,
-                //                 midiEvent.Arg3));
-
+                // Handle MIDI Note Event (note on, note off, control change, etc)
                 switch (midiEvent.MidiEventType)
                 {
                     case MidiEventType.NoteOn:
@@ -121,28 +112,43 @@ public class MIDIReader : MonoBehaviour {
                         {
                             var key = AudioManager.KeyDictionary[midiEvent.Arg2];
                             key.Stop();
+                            effects.StopEffect(key);
                         }
                         break;
                     case MidiEventType.ControlChange:
                         ControlChangeEvents(midiEvent, track.Index);
                         break;
                 }
-
-
             }
         }
+
+        tracksDone++;
     }
 
-    double BeatsPerMinuteToSpeed(float BPM)
+    private double BeatsPerMinuteToSpeed(float BPM)
     {
-        //return(60,000 / BeatsPerMinute) * Beats in a mesaure
+        // return (60,000 / BeatsPerMinute) * Beats in a mesaure
         return (double)((60000d / (double)(BPM * TicksPerQuarterNoteToSpeed(TicksPerQuarterNote))) / 1000d);
     }
-    double TicksPerQuarterNoteToSpeed(float PPQ)
+    private static double TicksPerQuarterNoteToSpeed(float PPQ)
     {
         return (double)(PPQ / 960d) ;
     }
 
+    private void DebugLogKeyInfo(MidiEvent midiEvent)
+    {
+        const string Format = "{0} Channel {1} Time {2} Args {3} {4}";
+        
+        Debug.Log(string.Format(Format, 
+            midiEvent.MidiEventType,
+            midiEvent.Channel,
+            midiEvent.Time,
+            midiEvent.Arg2,
+            midiEvent.Arg3
+        ));
+    }
+
+    // Handle a MIDI control change event
     void ControlChangeEvents(MidiEvent midiEvent, int trackIndex)
     {
         switch (midiEvent.Arg2)
@@ -150,19 +156,19 @@ public class MIDIReader : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                //Modulation Wheel or Lever
+                // Modulation Wheel or Lever
                 break;
             case 7:
-                //Channel Volume
+                // Channel Volume
                 ChannelVolume[trackIndex] = midiEvent.Arg3;
                 break;
             case 10:
-                //Stereo Pan
+                // Stereo Pan
                 ChannelPan[trackIndex] = (midiEvent.Arg3 / 12.8f);
                 break;
             case 64:
-                if (midiEvent.Arg3 <= 63) ChannelSustain[trackIndex] = false;
-                if (midiEvent.Arg3 >= 64) ChannelSustain[trackIndex] = true;
+                // Sustain Pedal
+                ChannelSustain[trackIndex] = midiEvent.Arg3 >= 64;
                 break;
             default:
                 break;

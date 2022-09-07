@@ -1,18 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using UnityEngine;
+
 namespace MidiParser
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-
     public class MidiFile
     {
         public readonly int Format;
-
         public readonly int TicksPerQuarterNote;
-
         public readonly MidiTrack[] Tracks;
-
         public readonly int TracksCount;
 
         public MidiFile(Stream stream)
@@ -31,12 +30,14 @@ namespace MidiParser
 
             if (Reader.ReadString(data, ref position, 4) != "MThd")
             {
-                throw new FormatException("Invalid file header (expected MThd)");
+                UnityEngine.Debug.LogError("Invalid file header (expected MThd)");
+                return;
             }
 
             if (Reader.Read32(data, ref position) != 6)
             {
-                throw new FormatException("Invalid header length (expected 6)");
+                UnityEngine.Debug.LogError("Invalid header length (expected 6)");
+                return;
             }
 
             this.Format = Reader.Read16(data, ref position);
@@ -45,7 +46,8 @@ namespace MidiParser
 
             if ((this.TicksPerQuarterNote & 0x8000) != 0)
             {
-                throw new FormatException("Invalid timing mode (SMPTE timecode not supported)");
+                UnityEngine.Debug.LogError("Invalid timing mode (SMPTE timecode not supported)");
+                return;
             }
 
             this.Tracks = new MidiTrack[this.TracksCount];
@@ -56,12 +58,7 @@ namespace MidiParser
             }
         }
 
-        private static bool ParseMetaEvent(
-            byte[] data,
-            ref int position,
-            byte metaEventType,
-            ref byte data1,
-            ref byte data2)
+        private static bool ParseMetaEvent(byte[] data, ref int position, byte metaEventType, ref byte data1, ref byte data2)
         {
             switch (metaEventType)
             {
@@ -95,7 +92,8 @@ namespace MidiParser
         {
             if (Reader.ReadString(data, ref position, 4) != "MTrk")
             {
-                throw new FormatException("Invalid track header (expected MTrk)");
+                UnityEngine.Debug.LogError("Invalid track header (expected MTrk)");
+                return null;
             }
 
             var trackLength = Reader.Read32(data, ref position);
@@ -210,16 +208,14 @@ namespace MidiParser
             public static byte[] ReadAllBytesFromStream(Stream input)
             {
                 var buffer = new byte[16 * 1024];
-                using (var ms = new MemoryStream())
+                using var ms = new MemoryStream();
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    int read;
-                    while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        ms.Write(buffer, 0, read);
-                    }
-
-                    return ms.ToArray();
+                    ms.Write(buffer, 0, read);
                 }
+
+                return ms.ToArray();
             }
 
             public static string ReadString(byte[] data, ref int i, int length)
@@ -260,99 +256,67 @@ namespace MidiParser
     public class MidiTrack
     {
         public int Index;
-
-        public List<MidiEvent> MidiEvents = new List<MidiEvent>();
-
-        public List<TextEvent> TextEvents = new List<TextEvent>();
+        public List<MidiEvent> MidiEvents = new();
+        public List<TextEvent> TextEvents = new();
     }
 
     public struct MidiEvent
     {
         public int Time;
-
         public byte Type;
-
         public byte Arg1;
-
         public byte Arg2;
-
         public byte Arg3;
-
         public MidiEventType MidiEventType => (MidiEventType)this.Type;
-
         public MetaEventType MetaEventType => (MetaEventType)this.Arg1;
-
         public int Channel => this.Arg1;
-
         public int Note => this.Arg2;
-
         public int Velocity => this.Arg3;
-
         public ControlChangeType ControlChangeType => (ControlChangeType)this.Arg2;
-
         public int Value => this.Arg3;
     }
 
     public struct TextEvent
     {
         public int Time;
-
         public byte Type;
-
         public string Value;
-
         public TextEventType TextEventType => (TextEventType)this.Type;
     }
 
     public enum MidiEventType : byte
     {
         NoteOff = 0x80,
-
         NoteOn = 0x90,
-
         KeyAfterTouch = 0xA0,
-
         ControlChange = 0xB0,
-
         ProgramChange = 0xC0,
-
         ChannelAfterTouch = 0xD0,
-
         PitchBendChange = 0xE0,
-
         MetaEvent = 0xFF
     }
 
     public enum ControlChangeType : byte
     {
         BankSelect = 0x00,
-
         Modulation = 0x01,
-
         Volume = 0x07,
-
         Balance = 0x08,
-
         Pan = 0x0A,
-
         Sustain = 0x40
     }
 
     public enum TextEventType : byte
     {
         Text = 0x01,
-
         TrackName = 0x03,
-
         Lyric = 0x05,
     }
 
     public enum MetaEventType : byte
     {
         Tempo = 0x51,
-
         TimeSignature = 0x58,
-
         KeySignature = 0x59
     }
 }

@@ -154,6 +154,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &6707738
 AudioSource:
   m_ObjectHideFlags: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &8125192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -466,6 +468,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &8435729
 AudioSource:
   m_ObjectHideFlags: 0
@@ -613,6 +616,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &20849257
 AudioSource:
   m_ObjectHideFlags: 0
@@ -761,6 +765,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &50692725
 AudioSource:
   m_ObjectHideFlags: 0
@@ -952,6 +957,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &85288093
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1175,6 +1181,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &106896195
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1440,6 +1447,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &127461451
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1950,6 +1958,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &160899159
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2114,6 +2123,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &169931840
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2222,7 +2232,6 @@ GameObject:
   - component: {fileID: 188448329}
   - component: {fileID: 188448331}
   - component: {fileID: 188448330}
-  - component: {fileID: 188448332}
   m_Layer: 5
   m_Name: PressS
   m_TagString: Untagged
@@ -2237,17 +2246,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188448328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.57552}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 122385634}
-  m_Father: {fileID: 289119670}
+  m_Father: {fileID: 1713143206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1063.2, y: 850}
+  m_AnchoredPosition: {x: 1988.921, y: 1286.6667}
   m_SizeDelta: {x: 412.5, y: 318.8416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188448330
@@ -2288,19 +2297,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188448328}
   m_CullTransparentMesh: 1
---- !u!114 &188448332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188448328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f3d72593c9f9f4aac8f007f456df6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
 --- !u!1 &217909797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2348,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &217909800
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2516,6 +2513,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &233088730
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2680,6 +2678,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &244558816
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2828,6 +2827,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &258371559
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3020,11 +3020,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 973402445}
-  - {fileID: 188448329}
   - {fileID: 615024791}
   - {fileID: 1627355787}
   - {fileID: 1517573898}
+  - {fileID: 1713143206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3097,6 +3096,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &295208093
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3245,6 +3245,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &313148452
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3467,6 +3468,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &330761100
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3630,6 +3632,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &336371888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3778,6 +3781,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &372990225
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3910,6 +3914,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &390271609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4074,6 +4079,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &397543559
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4222,6 +4228,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &406229596
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4370,6 +4377,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &411457867
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4518,6 +4526,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &435676206
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4666,6 +4675,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &449353188
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5454,6 +5464,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!1 &521100417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5489,6 +5500,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &521100419
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5720,7 +5732,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 827293406}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: applyChanges
+        m_MethodName: ApplyUIChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6135,6 +6147,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &623573288
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6283,6 +6296,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &633146245
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6671,6 +6685,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &654163915
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6819,6 +6834,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &666170597
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6967,6 +6983,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &669046332
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7234,6 +7251,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &678518453
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7461,6 +7479,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &705435042
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7849,6 +7868,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &709569932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7996,6 +8016,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &717371859
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8186,6 +8207,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &730194668
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8334,6 +8356,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &733753461
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8557,6 +8580,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &740090115
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8705,6 +8729,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &774512758
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8853,6 +8878,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &785070953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9037,6 +9063,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &798880481
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9185,6 +9212,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &803670015
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9333,6 +9361,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &807285862
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9462,25 +9491,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   input: {fileID: 615024792}
-  FilePath: 
+  filePath: 
   reader: {fileID: 827293408}
   PedalL: {fileID: 0}
   PedalM: {fileID: 0}
   PedalR: {fileID: 225121477}
+  sustainPedalSpeed: 100
   RCurtain: {fileID: 152218691}
   LCurtain: {fileID: 476657646}
   UIObjects:
   - {fileID: 1517573897}
   - {fileID: 1627355786}
   MasterVolume: 20
-  attack: 0.005
-  decay: 0.3
-  sustain: 1.4
-  release: 1.8
-  sampleRate: 48000
-  partialCount: 60
-  inharmonicity: 0
-  brightness: 18
 --- !u!4 &827293407
 Transform:
   m_ObjectHideFlags: 0
@@ -9602,6 +9624,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &828089953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9783,6 +9806,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &837188664
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9930,6 +9954,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &841552626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10078,6 +10103,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &847188399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10395,6 +10421,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &898648493
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10542,6 +10569,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &909437948
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10690,6 +10718,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &917810573
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10838,6 +10867,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &924235737
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10986,6 +11016,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &932303190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11452,7 +11483,6 @@ GameObject:
   - component: {fileID: 973402445}
   - component: {fileID: 973402447}
   - component: {fileID: 973402446}
-  - component: {fileID: 973402448}
   m_Layer: 5
   m_Name: PressE
   m_TagString: Untagged
@@ -11467,17 +11497,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973402444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.57552}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 697791198}
-  m_Father: {fileID: 289119670}
+  m_Father: {fileID: 1713143206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1296.2, y: 850}
+  m_AnchoredPosition: {x: 415.9878, y: 1286.6667}
   m_SizeDelta: {x: 412.5, y: 318.8416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973402446
@@ -11518,19 +11548,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973402444}
   m_CullTransparentMesh: 1
---- !u!114 &973402448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973402444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f3d72593c9f9f4aac8f007f456df6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
 --- !u!1 &980651296
 GameObject:
   m_ObjectHideFlags: 0
@@ -11582,6 +11599,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &980651299
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11730,6 +11748,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1000013006
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11911,6 +11930,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1050444343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12059,6 +12079,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1077828951
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12206,6 +12227,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1109779345
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12354,6 +12376,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1113382192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12502,6 +12525,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1125490944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12649,6 +12673,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1159035589
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12797,6 +12822,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1191453200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12945,6 +12971,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1220165415
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13093,6 +13120,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1230010194
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13241,6 +13269,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1270935312
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13389,6 +13418,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1282329098
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13537,6 +13567,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1301233164
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13760,6 +13791,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1308203635
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13908,6 +13940,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1316318128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14056,6 +14089,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1344576239
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14240,6 +14274,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1409618488
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14388,6 +14423,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1411133284
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14536,6 +14572,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1434491286
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14684,6 +14721,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1452931718
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14831,6 +14869,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1491402179
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14979,6 +15018,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1491671273
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15530,6 +15570,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1563469440
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15677,6 +15718,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1572033104
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15825,6 +15867,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1594286911
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16503,6 +16546,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1628798837
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16737,6 +16781,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1661424183
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16834,6 +16879,57 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1713143205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1713143206}
+  - component: {fileID: 1713143207}
+  m_Layer: 0
+  m_Name: KeyboardUIHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1713143206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713143205}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1920.1814, y: -1080, z: -0.86327994}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 973402445}
+  - {fileID: 188448329}
+  m_Father: {fileID: 289119670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713143207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713143205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f3d72593c9f9f4aac8f007f456df6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyboardUI
+  speed: 50
+  uiFadeDelaySeconds: 4
+  UiObjectsToFade:
+  - {fileID: 973402444}
+  - {fileID: 188448328}
 --- !u!1 &1737429844
 GameObject:
   m_ObjectHideFlags: 0
@@ -16885,6 +16981,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1737429847
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17033,6 +17130,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1738844695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17181,6 +17279,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1759983482
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17329,6 +17428,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1776580707
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17477,6 +17577,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1793759170
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17625,6 +17726,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1807858318
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17773,6 +17875,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1808567713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17921,6 +18024,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1834837267
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18069,6 +18173,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1838607522
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18217,6 +18322,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1841434010
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18364,6 +18470,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1856008653
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18554,6 +18661,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1937019026
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18702,6 +18810,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1945096662
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19000,6 +19109,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1952622748
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19147,6 +19257,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1977843546
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19295,6 +19406,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1978154629
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19443,6 +19555,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1985160023
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19591,6 +19704,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &1988346573
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19738,6 +19852,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2008536782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19886,6 +20001,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2024965305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20034,6 +20150,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2052916527
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20368,6 +20485,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2085712251
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20516,6 +20634,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2086696189
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20707,6 +20826,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2104142943
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20855,6 +20975,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2110227060
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20987,6 +21108,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2116116951
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21151,6 +21273,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   pressAngle: 10
   pressSpeed: 10
+  materialChanged: 0
 --- !u!82 &2144630215
 AudioSource:
   m_ObjectHideFlags: 0

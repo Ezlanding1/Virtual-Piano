@@ -17,6 +17,8 @@ public class Key : MonoBehaviour
     private Quaternion restRotation;
     private Coroutine rotationCoroutine;
 
+    public bool materialChanged;
+
     void Start()
     {
         synth = gameObject.AddComponent<Synth>();
@@ -31,11 +33,12 @@ public class Key : MonoBehaviour
 
     public void Play(float velocity, int channel)
     {
+        // Set synth info from MidiReader data
         synth.pan = reader.ChannelPan[channel];
         synth.sustainPedal = reader.ChannelSustain[channel];
 
         var channelVolume = reader.ChannelVolume[channel];
-        synth.velocity = ((((velocity / 127f) * (channelVolume / 100f)) * audioManager.MasterVolume)) / 100f;
+        synth.velocity = CalculateNoteVelocity(velocity, channelVolume, audioManager.MasterVolume);
 
         synth.Play();
 
@@ -44,10 +47,13 @@ public class Key : MonoBehaviour
         rotationCoroutine = StartCoroutine(RotateKey(restRotation * Quaternion.Euler(-pressAngle, 0f, 0f)));
     }
 
+    private static float CalculateNoteVelocity(float velocity, float channelVolume, float masterVolume) =>
+        (velocity / 127f) * (channelVolume / 100f) * (masterVolume / 100f);
+
+
     public void Stop()
     {
         synth.Stop();
-        audioManager.gameObject.GetComponent<Effects>().StopEffect(GetComponent<Key>());
 
         // Rotate key back up
         if (rotationCoroutine != null) StopCoroutine(rotationCoroutine);
@@ -63,4 +69,6 @@ public class Key : MonoBehaviour
         }
         transform.localRotation = targetRotation;
     }
+
+    public bool IsBlackKey() => KeyName.Contains('/');
 }
