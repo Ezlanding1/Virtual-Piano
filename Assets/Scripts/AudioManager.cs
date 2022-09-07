@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("Global Settings")]
     [SerializeField] public float MasterVolume = 10f;
+
+    [SerializeField] GameObject ErrMsgUiObj;
     
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,31 @@ public class AudioManager : MonoBehaviour
     public void ApplyUIChanges()
     {
         filePath = input.text;
+
+        // Add ".mid" MIDI file extension if missing
+        if (!Path.GetExtension(filePath).Equals(".mid", StringComparison.CurrentCultureIgnoreCase) &&
+            !Path.GetExtension(filePath).Equals(".midi", StringComparison.CurrentCultureIgnoreCase))
+            filePath += ".mid";
+
+        #if UNITY_EDITOR
+            var newPath = Path.Combine(Application.dataPath, "MIDI", filePath);
+            if (!File.Exists(filePath) && File.Exists(newPath))
+                filePath = newPath;
+        #endif
+
+        if (!File.Exists(filePath))
+        {
+            StartCoroutine(ErrMsgUI());
+        }
+
         input.gameObject.SetActive(false);
+    }
+    
+    IEnumerator ErrMsgUI()
+    {
+        ErrMsgUiObj.SetActive(true);
+        ErrMsgUiObj.transform.GetChild(2).GetComponent<Text>().text = $"File Path: {filePath}";
+        yield return new WaitForSeconds(4f);
+        ErrMsgUiObj.SetActive(false);
     }
 }
