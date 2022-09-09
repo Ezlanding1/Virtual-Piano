@@ -40,8 +40,11 @@ Or, reference the file path your own MIDI file.
 > All MIDI files used were sourced from public domain or transposed by me
 
 ## Installation
+
+### **Please note that audio quality heavily depends on the speed of your machine, since each note is calculated on the fly by additive synthesis. A slower machine will experience slower music, lower audio quality, and stutters/pops.**
+
 ### Install from Release
-Download the latest version of the Virtual Piano from the Releases Page. Unizip the folder, and run the `Virtual Piano` executable.
+Download the latest version of the Virtual Piano from the [Releases Page](https://github.com/Ezlanding1/Virtual-Piano/releases). Unizip the folder, and run the `Virtual Piano` executable.
 
 ### Build from Source
 > Created for Unity Game Engine version 6000.4.2f1

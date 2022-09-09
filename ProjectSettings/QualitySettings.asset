@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 0
   m_QualitySettings:
   - serializedVersion: 5
     name: Very Low
@@ -33,7 +33,7 @@ QualitySettings:
     realtimeGICPUUsage: 25
     adaptiveVsyncExtraA: 0
     adaptiveVsyncExtraB: 0
-    lodBias: 0.3
+    lodBias: 1
     meshLodThreshold: 1
     maximumLODLevel: 0
     enableLODCrossFade: 1
@@ -245,7 +245,7 @@ QualitySettings:
     realtimeGICPUUsage: 50
     adaptiveVsyncExtraA: 0
     adaptiveVsyncExtraB: 0
-    lodBias: 1.5
+    lodBias: 1
     meshLodThreshold: 1
     maximumLODLevel: 0
     enableLODCrossFade: 1
